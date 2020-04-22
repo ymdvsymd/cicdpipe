@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  web:
+    image: tiwvstiw/cicdpipe_web
+    ports:
+      - "0:80"
+    volumes: 
+      - sockets:/cicdpipe/tmp/sockets
+
+  app:
+    environment:
+      - BUNDLE_WITHOUT=test:development
+      - RAILS_ENV=production
+      - NODE_ENV=production
+    image: tiwvstiw/cicdpipe_app
+    volumes:
+      - sockets:/cicdpipe/tmp/sockets
+    working_dir: /cicdpipe
+    command: ["bundle", "exec", "rails", "server"]
+
+volumes:
+  sockets:
