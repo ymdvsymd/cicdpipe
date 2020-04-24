@@ -1,0 +1,25 @@
+name: Test And Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker-compose build web app
+
+      - name: Login to registry
+        env:
+          DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+        run: echo "${DOCKER_HUB_TOKEN}" | docker login -u tiwvstiw --password-stdin
+
+      - name: Push image
+        run: |
+          docker push tiwvstiw/cicdpipe_web
+          docker push tiwvstiw/cicdpipe_app

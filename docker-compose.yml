@@ -21,8 +21,6 @@ services:
       context: .
       dockerfile: ./docker/app/Dockerfile
     image: tiwvstiw/cicdpipe_app
-    depends_on:
-      - db
     volumes:
       - sockets:/cicdpipe/tmp/sockets
       - bundle:/usr/local/bundle
