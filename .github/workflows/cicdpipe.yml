@@ -47,13 +47,13 @@ jobs:
 
       - name: Render Task Definition
         run: |
-          ecs-cli compose -f .\ecs-compose.yml create --cluster-config cicdpipe
+          ecs-cli compose -f ecs-compose.yml create --cluster-config cicdpipe
 
       - name: Deploy Task Definition
         env:
           AWS_TARGET_GROUP_ARN: ${{ secrets.AWS_TARGET_GROUP_ARN }}
         run: |
-          ecs-cli compose -f .\ecs-compose.yml service up \
+          ecs-cli compose -f ecs-compose.yml service up \
             --deployment-min-healthy-percent 0 --deployment-max-percent 100 \
             --target-group-arn $AWS_TARGET_GROUP_ARN \
             --container-name web --container-port 80 --cluster-config cicdpipe
