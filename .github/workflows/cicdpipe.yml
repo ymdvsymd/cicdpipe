@@ -25,6 +25,7 @@ jobs:
           docker push tiwvstiw/cicdpipe_app
 
   deploy:
+    needs: push
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
