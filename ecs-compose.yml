@@ -17,7 +17,7 @@ services:
     volumes:
       - sockets:/cicdpipe/tmp/sockets
     working_dir: /cicdpipe
-    command: ["bundle", "exec", "rails", "server"]
+    command: /bin/sh -c "entrypoint.sh"
 
 volumes:
   sockets:
