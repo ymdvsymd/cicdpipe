@@ -43,5 +43,5 @@ RUN appdeps=' \
 ENV LC_ALL ja_JP.UTF-8
 
 # 開発環境ではホストのアプリディレクトリをマウントするため不要だが、リリース時に必要
-WORKDIR /myapp
+WORKDIR /cicdpipe
 COPY . .
