@@ -1,5 +1,7 @@
 bundle exec rails db:migrate
 
+set -e
+
 if [ $? != 0 ]; then
   echo
   echo "== Failed to migrate. Running setup first."
