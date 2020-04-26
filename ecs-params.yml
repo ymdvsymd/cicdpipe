@@ -8,5 +8,7 @@ task_definition:
   services:
     app:
       secrets:
+        - value_from: ps-cicdpipe-db-endpoint
+          name: CICDPIPE_DATABASE_ENDPOINT
         - value_from: ps-cicdpipe-db-pass
           name: CICDPIPE_DATABASE_PASSWORD

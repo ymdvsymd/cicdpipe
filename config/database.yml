@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  host: <%= ENV['CICDPIPE_DATABASE_ENDPOINT'] %>
   database: cicdpipe_production
   username: cicdpipe
   password: <%= ENV['CICDPIPE_DATABASE_PASSWORD'] %>
