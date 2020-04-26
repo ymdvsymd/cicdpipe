@@ -12,3 +12,5 @@ task_definition:
           name: CICDPIPE_DATABASE_ENDPOINT
         - value_from: ps-cicdpipe-db-pass
           name: CICDPIPE_DATABASE_PASSWORD
+        - value_from: ps-cicdpipe-rails-master-key
+          name: RAILS_MASTER_KEY
