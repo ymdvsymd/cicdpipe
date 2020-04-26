@@ -5,3 +5,8 @@ task_definition:
   task_size:
     cpu_limit: 128
     mem_limit: 256
+  services:
+    app:
+      secrets:
+        - value_from: ps-cicdpipe-db-pass
+          name: CICDPIPE_DATABASE_PASSWORD

@@ -42,12 +42,12 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          ecs-cli configure profile --profile-name cicdpipe --access-key $AWS_ACCESS_KEY_ID --secret-key $AWS_SECRET_ACCESS_KEY
-          ecs-cli configure --config-name cicdpipe --cluster cl-cicdpipe --region ap-northeast-1 --default-launch-type EC2
+          ecs-cli configure profile --profile-name main --access-key $AWS_ACCESS_KEY_ID --secret-key $AWS_SECRET_ACCESS_KEY
+          ecs-cli configure --config-name main --cluster cl-main --region ap-northeast-1 --default-launch-type EC2
 
       - name: Render Task Definition
         run: |
-          ecs-cli compose -f ecs-compose.yml create --cluster-config cicdpipe
+          ecs-cli compose -f ecs-compose.yml create --cluster-config main
 
       - name: Deploy Task Definition
         env:
@@ -56,4 +56,4 @@ jobs:
           ecs-cli compose -f ecs-compose.yml service up \
             --deployment-min-healthy-percent 0 --deployment-max-percent 100 \
             --target-group-arn $AWS_TARGET_GROUP_ARN \
-            --container-name web --container-port 80 --cluster-config cicdpipe
+            --container-name web --container-port 80 --cluster-config main
