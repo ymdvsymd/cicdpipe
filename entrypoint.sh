@@ -1,4 +1,4 @@
-bundle exec rake db:migrate
+bundle exec rails db:migrate
 
 if [ $? != 0 ]; then
   echo

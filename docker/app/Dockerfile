@@ -45,3 +45,4 @@ ENV LC_ALL ja_JP.UTF-8
 # 開発環境ではホストのアプリディレクトリをマウントするため不要だが、リリース時に必要
 WORKDIR /cicdpipe
 COPY . .
+RUN ["chmod", "+x", "./entrypoint.sh"]
