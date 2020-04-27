@@ -6,7 +6,7 @@ services:
     ports:
       - "0:80"
     volumes: 
-      - sockets:/cicdpipe/tmp/sockets
+      - sockets:/sockets
 
   app:
     environment:
@@ -16,7 +16,6 @@ services:
     image: tiwvstiw/cicdpipe_app
     volumes:
       - sockets:/cicdpipe/tmp/sockets
-    working_dir: /cicdpipe
     command: /bin/sh -c "./entrypoint.sh"
 
 volumes:

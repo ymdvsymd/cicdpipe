@@ -9,7 +9,7 @@ services:
       - "80:80"
     volumes: 
       # socketファイルの共有
-      - sockets:/cicdpipe/tmp/sockets
+      - sockets:/sockets
     depends_on: 
       - app
 
@@ -23,7 +23,7 @@ services:
     image: tiwvstiw/cicdpipe_app
     volumes:
       - sockets:/cicdpipe/tmp/sockets
-      - bundle:/usr/local/bundle
+      - bundle:/bundle
     ports:
       - "3000:3000"
 
