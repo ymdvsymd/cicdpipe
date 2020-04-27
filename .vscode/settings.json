@@ -1,19 +1,12 @@
 {
-  "ruby.codeCompletion": "rcodetools",
-  "ruby.intellisense": "rubyLocate",
-  "ruby.lint": {
-      "reek": true,
-      "rubocop": true,
-      "ruby": true,
-      "fasterer": true,
-      "debride": true,
-      "ruby-lint": true
-  },
-  "solargraph.commandPath": "/usr/local/bundle/bin/solargraph",
-  "solargraph.definitions": true,
+  "solargraph.commandPath": "/bundle/bin/solargraph",
+  "solargraph.diagnostics": true,
+  "solargraph.completion": true,
+  "solargraph.autoformat": true,
   "solargraph.formatting": true,
-  "editor.formatOnSaveTimeout": 5000,
-  "[ruby]": {
-    "editor.formatOnSave": true
-  }
+  "solargraph.symbols": true,
+  "solargraph.definitions": true,
+  "solargraph.rename": true,
+  "solargraph.references": true,
+  "solargraph.folding": true
 }
