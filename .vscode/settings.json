@@ -1,5 +1,6 @@
 {
-  "solargraph.commandPath": "/bundle/bin/solargraph",
+  "solargraph.useBundler": true,
+  "solargraph.bundlerPath": "/bundle/bin/bundle",
   "solargraph.diagnostics": true,
   "solargraph.completion": true,
   "solargraph.autoformat": true,
@@ -8,5 +9,6 @@
   "solargraph.definitions": true,
   "solargraph.rename": true,
   "solargraph.references": true,
-  "solargraph.folding": true
+  "solargraph.folding": true,
+  "solargraph.logLevel": "debug"
 }
