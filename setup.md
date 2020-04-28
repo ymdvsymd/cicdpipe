@@ -25,6 +25,27 @@ VSCodeでアプリのルートディレクトリをContainerにアタッチす�
 rails new . --database=postgresql
 ```
 
+## Gemfileを編集する
+### 開発用gemを追加する
+group :developmentに以下を追加する。
+```
+gem "rubocop", require: false
+gem "rubocop-performance", require: false
+gem "rubocop-rails", require: false
+gem "solargraph"
+
+gem "ruby-debug-ide"
+
+gem "debase"
+```
+
+### 不要なgemを削除する
+```
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+```
+**bundle installを忘れずに**
+
 ## DBを作る
 railsには、config/database.ymlの内容でDBを作成するコマンドがある。それを実行する。
 1. database.ymlを編集する。username, password, host, portを書き換える。
