@@ -10,5 +10,6 @@
   "solargraph.rename": true,
   "solargraph.references": true,
   "solargraph.folding": true,
-  "solargraph.logLevel": "debug"
+  "solargraph.logLevel": "debug",
+  "i18n-ally.localesPaths": "config/locales"
 }
