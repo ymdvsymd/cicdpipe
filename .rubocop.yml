@@ -26,3 +26,7 @@ Style/HashTransformValues:
 
 Style/SymbolArray:
   Enabled: false
+
+# 本に合わせるため
+Rails/HelperInstanceVariable:
+  Enabled: false
