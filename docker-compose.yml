@@ -14,14 +14,15 @@ services:
       - app
 
   app:
-    environment:
-      - RAILS_ENV=development
-      - NODE_ENV=development
-      - SPROCKETS_CACHE=/sprockets_cache
     build:
+      # buildでenvironmentを参照できないのでargsを使う
+      args:
+        - build_context=development
       context: .
       dockerfile: ./docker/app/Dockerfile
     image: tiwvstiw/cicdpipe_app
+    environment:
+      - SPROCKETS_CACHE=/sprockets_cache
     volumes:
       - sockets:/cicdpipe/tmp/sockets
       - bundle:/bundle

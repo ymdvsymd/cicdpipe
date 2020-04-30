@@ -10,10 +10,7 @@ services:
 
   app:
     environment:
-      - BUNDLE_WITHOUT=test:development
-      - RAILS_ENV=production
       - RAILS_LOG_TO_STDOUT=true
-      - NODE_ENV=production
     image: tiwvstiw/cicdpipe_app
     volumes:
       - sockets:/cicdpipe/tmp/sockets

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 bundle exec rails db:migrate
 
 set -e
@@ -10,5 +12,4 @@ if [ $? != 0 ]; then
   bundle exec rails db:migrate
 fi
 
-bundle exec rails assets:precompile
 bundle exec rails server
