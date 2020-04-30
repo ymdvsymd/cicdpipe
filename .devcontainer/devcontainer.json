@@ -26,9 +26,22 @@
 
   // Add the IDs of extensions you want installed when the container is created.
   "extensions": [
+    // Extension Pack
+    "aki77.rails-extension-pack",
+
+    // Ruby
+    "rebornix.ruby",
     "castwide.solargraph",
-    "endverbraucher.pack-rails",
-    "jduponchelle.rainbow-end"
+    "jduponchelle.rainbow-end",
+    "kaiwood.endwise",
+    "misogi.ruby-rubocop",
+
+    // Rails
+    "bung87.rails",
+    "hridoy.rails-snippets",
+
+    //ERB
+    "aliariff.vscode-erb-beautify",
   ],
 
   // Uncomment the next line if you want start specific services in your Docker Compose config.

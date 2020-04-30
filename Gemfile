@@ -53,9 +53,10 @@ group :development do
   gem "rubocop-rails", require: false
   gem "solargraph"
 
+  gem "debase"
   gem "ruby-debug-ide"
 
-  gem "debase"
+  gem "htmlbeautifier"
 end
 
 group :test do

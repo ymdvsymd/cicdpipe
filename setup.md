@@ -34,9 +34,10 @@ gem "rubocop-performance", require: false
 gem "rubocop-rails", require: false
 gem "solargraph"
 
+gem "debase"
 gem "ruby-debug-ide"
 
-gem "debase"
+gem "htmlbeautifier"
 ```
 
 ### 不要なgemを削除する

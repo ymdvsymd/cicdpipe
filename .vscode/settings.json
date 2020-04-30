@@ -1,4 +1,14 @@
 {
+  "emmet.includeLanguages": {
+    "erb": "html"
+  },
+
+  "files.associations": {
+    "*.erb": "erb"
+  },
+
+  "i18n-ally.localesPaths": "config/locales",
+  
   "solargraph.useBundler": true,
   "solargraph.bundlerPath": "/bundle/bin/bundle",
   "solargraph.diagnostics": true,
@@ -11,5 +21,4 @@
   "solargraph.references": true,
   "solargraph.folding": true,
   "solargraph.logLevel": "debug",
-  "i18n-ally.localesPaths": "config/locales"
 }
