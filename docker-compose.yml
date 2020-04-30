@@ -17,6 +17,7 @@ services:
     environment:
       - RAILS_ENV=development
       - NODE_ENV=development
+      - SPROCKETS_CACHE=/sprockets_cache
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
@@ -24,6 +25,7 @@ services:
     volumes:
       - sockets:/cicdpipe/tmp/sockets
       - bundle:/bundle
+      - sprockets_cache:/sprockets_cache
     ports:
       - "3000:3000"
 
@@ -40,4 +42,5 @@ services:
 volumes:
   sockets:
   bundle:
+  sprockets_cache:
   db_data:

@@ -42,6 +42,10 @@
 
     //ERB
     "aliariff.vscode-erb-beautify",
+
+    // Frontend
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
   ],
 
   // Uncomment the next line if you want start specific services in your Docker Compose config.

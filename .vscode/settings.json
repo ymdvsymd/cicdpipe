@@ -1,14 +1,10 @@
 {
-  "emmet.includeLanguages": {
-    "erb": "html"
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
   },
+  "files.insertFinalNewline": true,
 
-  "files.associations": {
-    "*.erb": "erb"
-  },
-
-  "i18n-ally.localesPaths": "config/locales",
-  
+  // Ruby
   "solargraph.useBundler": true,
   "solargraph.bundlerPath": "/bundle/bin/bundle",
   "solargraph.diagnostics": true,
@@ -21,4 +17,12 @@
   "solargraph.references": true,
   "solargraph.folding": true,
   "solargraph.logLevel": "debug",
+
+  // ERB
+  "files.associations": {
+    "*.erb": "erb"
+  },
+  "emmet.includeLanguages": {
+    "erb": "html"
+  },
 }
