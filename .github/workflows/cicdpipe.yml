@@ -1,4 +1,4 @@
-name: Test And Deploy
+name: CD
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker-compose build web app
+        run: docker-compose -f docker-compose.yml -f docker-compose.production.yml build web app
 
       - name: Login to registry
         env:
