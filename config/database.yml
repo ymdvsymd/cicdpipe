@@ -25,10 +25,10 @@ default: &default
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: postgres
+  username: cicdpipe
 
   # The password associated with the postgres role (username).
-  password: postgres
+  password: cicdpipe
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -80,7 +80,6 @@ test:
 #
 production:
   <<: *default
-  host: <%= ENV['CICDPIPE_DATABASE_ENDPOINT'] %>
+  host: <%= ENV.fetch("CICDPIPE_DATABASE_ENDPOINT") { "db" } %>
   database: cicdpipe_production
-  username: cicdpipe
-  password: <%= ENV['CICDPIPE_DATABASE_PASSWORD'] %>
+  password: <%= ENV.fetch("CICDPIPE_DATABASE_PASSWORD") { "cicdpipe" } %>

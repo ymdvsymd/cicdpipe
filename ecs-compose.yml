@@ -6,6 +6,7 @@ services:
     ports:
       - "0:80"
     volumes: 
+      - public:/cicdpipe/public
       - sockets:/sockets
 
   app:
@@ -13,8 +14,10 @@ services:
       - RAILS_LOG_TO_STDOUT=true
     image: tiwvstiw/cicdpipe_app
     volumes:
+      - public:/cicdpipe/public
       - sockets:/cicdpipe/tmp/sockets
     command: /bin/sh -c "./entrypoint.sh"
 
 volumes:
+  public:
   sockets:

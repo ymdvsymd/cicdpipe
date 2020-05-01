@@ -13,12 +13,12 @@ ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE 1
 ENV DEBIAN_FRONTEND noninteractive
 # 一時変数としてARGを使う
 ARG APP_DEPS=' \
-    build-essential \
-    libpq-dev \
     postgresql-client \
     locales \
     '
 ARG BUILD_DEPS=' \
+    build-essential \
+    libpq-dev \
     nodejs \
     yarn \
     '
@@ -41,14 +41,14 @@ WORKDIR /cicdpipe
 # 開発環境ではホストのアプリディレクトリをマウントするため不要だが、リリース時に必要
 COPY . .
 
+# gem update --systemで、bundlerのverは上がるので、gem install bundlerしない
 RUN apt-get -qq update && apt-get install -yq --no-install-recommends $TMP_DEPS && \
     curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get -qq update && apt-get -yq dist-upgrade && \
-    apt-get install -yq --no-install-recommends $APP_DEPS $BUILD_DEPS && \
+    apt-get -qq update && apt-get install -yq --no-install-recommends $APP_DEPS $BUILD_DEPS && \
     echo "ja_JP.UTF-8 UTF-8" > /etc/locale.gen && locale-gen ja_JP.UTF-8 && \
-    gem update --system && gem install bundler
+    gem update --system
 
 ENV LC_ALL ja_JP.UTF-8
 
