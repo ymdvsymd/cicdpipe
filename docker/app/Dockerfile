@@ -52,7 +52,8 @@ RUN apt-get -qq update && apt-get install -yq --no-install-recommends $TMP_DEPS 
 
 ENV LC_ALL ja_JP.UTF-8
 
-RUN ./docker/app/setup-${build_context}.sh
+RUN chmod +x ./docker/app/setup-${build_context}.sh && \
+    ./docker/app/setup-${build_context}.sh
 
 # 元に戻す
 ENV DEBIAN_FRONTEND dialog
