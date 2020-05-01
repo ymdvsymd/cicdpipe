@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: docker-compose -f docker-compose.yml -f docker-compose.production.yml build web app
 
       - name: Login to registry
