@@ -2,14 +2,14 @@ version: '3'
 
 services:
   web:
+    # ecs-cliでbuildはサポート対象外なため無視される
     build:
       context: ./docker/web
     image: tiwvstiw/cicdpipe_web
     ports:
-      - "80:80"
+      - "0:80"
     volumes:
       - public:/cicdpipe/public
-      # socketファイルの共有
       - sockets:/cicdpipe/sockets
     depends_on: 
       - app
@@ -18,33 +18,19 @@ services:
     build:
       # buildでenvironmentを参照できないのでargsを使う
       args:
-        - build_context=development
+        - build_context=production
       context: .
       dockerfile: ./docker/app/Dockerfile
     image: tiwvstiw/cicdpipe_app
     environment:
-      - SPROCKETS_CACHE=/sprockets_cache
+      - RAILS_LOG_TO_STDOUT=true
     volumes:
       - public:/cicdpipe/public
       - sockets:/cicdpipe/tmp/sockets
       - bundle:/bundle
-      - sprockets_cache:/sprockets_cache
-    ports:
-      - "3000:3000"
-
-  db:
-    image: postgres:12.2
-    environment:
-      POSTGRES_USER: cicdpipe
-      POSTGRES_PASSWORD: cicdpipe
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+    command: /bin/sh -c "./entrypoint.sh"
 
 volumes:
   public:
   sockets:
   bundle:
-  sprockets_cache:
-  db_data:
