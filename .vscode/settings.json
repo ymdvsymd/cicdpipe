@@ -9,7 +9,6 @@
   "solargraph.bundlerPath": "/bundle/bin/bundle",
   "solargraph.diagnostics": true,
   "solargraph.completion": true,
-  "solargraph.autoformat": true,
   "solargraph.formatting": true,
   "solargraph.symbols": true,
   "solargraph.definitions": true,
@@ -17,6 +16,9 @@
   "solargraph.references": true,
   "solargraph.folding": true,
   "solargraph.logLevel": "debug",
+  "[ruby]": {
+    "editor.formatOnSave": true,
+  },
 
   // ERB
   "files.associations": {
@@ -24,5 +26,8 @@
   },
   "emmet.includeLanguages": {
     "erb": "html"
+  },
+  "[erb]": {
+    "editor.formatOnSave": true,
   },
 }

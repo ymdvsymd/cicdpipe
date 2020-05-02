@@ -2,11 +2,26 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Rails server",
+      "name": "Development",
       "type": "Ruby",
       "request": "launch",
       "program": "${workspaceRoot}/bin/rails",
-      "args": ["s"]
+      "args": [
+        "s"
+      ]
+    },
+    {
+      "name": "Production",
+      "type": "Ruby",
+      "request": "launch",
+      "env": {
+        "RAILS_ENV": "production",
+        "SECRET_KEY_BASE": "for_exec"
+      },
+      "program": "${workspaceRoot}/bin/rails",
+      "args": [
+        "s"
+      ]
     }
   ]
 }
