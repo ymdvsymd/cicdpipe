@@ -1,4 +1,20 @@
 {
+  "cSpell.allowCompoundWords": true,
+  "cSpell.enableFiletypes": [
+    "css",
+    "html",
+    "javascript",
+    "json",
+    "markdown",
+    "ruby",
+    "scss",
+    "text",
+    "yaml",
+    "yml",
+  ],
+  "cSpell.words": [
+    "unprocessable"
+  ],
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
