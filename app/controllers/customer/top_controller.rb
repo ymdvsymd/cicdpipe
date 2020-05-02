@@ -1,3 +1,5 @@
 class Customer::TopController < ApplicationController
-  def index; end
+  def index
+    render
+  end
 end
