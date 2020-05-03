@@ -47,5 +47,5 @@ ecs-cli compose -f docker-compose.yml service scale 1
 ecs-cli compose -f docker-compose.yml service up `
 --deployment-min-healthy-percent 0 --deployment-max-percent 100 `
 --target-group-arn arn:aws:elasticloadbalancing:ap-northeast-1:002782830721:targetgroup/tg-main/cafe7d12d5a821a7 `
---container-name web --container-port 80 --cluster-config main
+--container-name web --container-port 80 --timeout 10 --cluster-config main
 ```
