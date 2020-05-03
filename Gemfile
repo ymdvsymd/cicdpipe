@@ -55,8 +55,6 @@ group :development do
 
   gem "debase"
   gem "ruby-debug-ide"
-
-  gem "htmlbeautifier"
 end
 
 group :test do

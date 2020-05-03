@@ -2,6 +2,7 @@
   "cSpell.allowCompoundWords": true,
   "cSpell.enableFiletypes": [
     "css",
+    "erb",
     "html",
     "javascript",
     "json",
@@ -13,6 +14,12 @@
     "yml",
   ],
   "cSpell.words": [
+    "Cicdpipe",
+    "baukis",
+    "csrf",
+    "postgres",
+    "rspec",
+    "rubocop",
     "unprocessable"
   ],
   "editor.codeActionsOnSave": {
@@ -22,28 +29,26 @@
 
   // Ruby
   "solargraph.useBundler": true,
-  "solargraph.bundlerPath": "/bundle/bin/bundle",
   "solargraph.diagnostics": true,
-  "solargraph.completion": true,
   "solargraph.formatting": true,
-  "solargraph.symbols": true,
-  "solargraph.definitions": true,
-  "solargraph.rename": true,
-  "solargraph.references": true,
-  "solargraph.folding": true,
-  "solargraph.logLevel": "debug",
   "[ruby]": {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": true
   },
 
   // ERB
   "files.associations": {
-    "*.erb": "erb"
+    "*.html.erb": "erb"
   },
   "emmet.includeLanguages": {
     "erb": "html"
   },
+  "beautify.language": {
+    "html": [
+      "erb",
+      "html",
+    ]
+  },
   "[erb]": {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": true
   },
 }

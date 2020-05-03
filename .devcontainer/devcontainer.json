@@ -33,20 +33,21 @@
 
     // Ruby
     "rebornix.ruby",
-    "castwide.solargraph",
-    "jduponchelle.rainbow-end",
-    "kaiwood.endwise",
     "misogi.ruby-rubocop",
+    "castwide.solargraph",
+    "kaiwood.endwise",
+    "jduponchelle.rainbow-end",
 
     // Rails
     "bung87.rails",
 
-    //ERB
+    // ERB
     "aliariff.vscode-erb-beautify",
 
     // Frontend
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
+    "hookyqr.beautify",
   ],
 
   // Uncomment the next line if you want start specific services in your Docker Compose config.
