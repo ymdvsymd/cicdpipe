@@ -15,8 +15,13 @@
   ],
   "cSpell.words": [
     "Cicdpipe",
+    "Struct",
     "baukis",
+    "behaviour",
+    "behaviours",
     "csrf",
+    "falsey",
+    "plpgsql",
     "postgres",
     "rspec",
     "rubocop",
@@ -42,13 +47,15 @@
   "emmet.includeLanguages": {
     "erb": "html"
   },
+  "[erb]": {
+    "editor.formatOnSave": true
+  },
+
+  // Frontend
   "beautify.language": {
     "html": [
       "erb",
       "html",
     ]
-  },
-  "[erb]": {
-    "editor.formatOnSave": true
   },
 }

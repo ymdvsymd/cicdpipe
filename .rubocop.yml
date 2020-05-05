@@ -30,3 +30,6 @@ Style/SymbolArray:
 # 本に合わせるため
 Rails/HelperInstanceVariable:
   Enabled: false
+Metrics/AbcSize:
+  Enabled: true
+  Max: 25
