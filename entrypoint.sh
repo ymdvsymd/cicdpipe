@@ -8,8 +8,7 @@ if [ $? != 0 ]; then
   echo
   echo "== Failed to migrate. Running setup first."
   echo
-  bundle exec rails db:setup && \
-  bundle exec rails db:migrate
+  bundle exec rails db:setup
 fi
 
 bundle exec rails server
