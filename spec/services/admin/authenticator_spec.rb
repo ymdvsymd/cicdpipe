@@ -3,7 +3,7 @@ require "rails_helper"
 describe "authenticate" do
   example "正しいパスワードならtrueを返す" do
     m = build(:administrator)
-    expect(Admin::Authenticator.new(m).authenticate("pw")).to be_falsey
+    expect(Admin::Authenticator.new(m).authenticate("pw")).to be_truthy
   end
 
   example "誤ったパスワードならfalseを返す" do
