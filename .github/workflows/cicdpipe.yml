@@ -15,10 +15,10 @@ jobs:
         run: BUILD_CONTEXT="test" docker-compose -f docker-compose.yml -f .devcontainer/docker-compose.yml up -d
 
       - name: DB setup
-        run: docker-compose exec app rails db:setup
+        run: docker-compose exec -T app rails db:setup
 
       - name: Run test
-        run: docker-compose exec app rspec
+        run: docker-compose exec -T app rspec
 
   build_and_push_image:
     runs-on: ubuntu-18.04
