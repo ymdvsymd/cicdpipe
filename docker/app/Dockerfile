@@ -74,4 +74,5 @@ COPY . .
 COPY --from=dev-env /bundle /bundle
 
 RUN apk add --no-cache $APP_DEPS && \
-    gem update --system
+    gem update --system && \
+    chmod +x ./entrypoint.sh
