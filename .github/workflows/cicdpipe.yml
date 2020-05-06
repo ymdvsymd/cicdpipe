@@ -44,6 +44,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Change Docker Compose version (ECS CLI dose not support ver 3.4)
+        run: sed -e 's/3.4/3/g' ./docker-compose.yml > ./ecs-compose.yml
+
       - name: Install ECS CLI
         run: |
           mkdir -p "$HOME/tools/ecs-cli"
@@ -61,13 +64,13 @@ jobs:
 
       - name: Render Task Definition
         run: |
-          ecs-cli compose -f docker-compose.yml create --cluster-config main
+          ecs-cli compose -f ecs-compose.yml create --cluster-config main
 
       - name: Deploy Task Definition
         env:
           AWS_TARGET_GROUP_ARN: ${{ secrets.AWS_TARGET_GROUP_ARN }}
         run: |
-          ecs-cli compose -f docker-compose.yml service up \
+          ecs-cli compose -f ecs-compose.yml service up \
             --deployment-min-healthy-percent 0 --deployment-max-percent 100 \
             --target-group-arn $AWS_TARGET_GROUP_ARN \
             --container-name web --container-port 80 --timeout 10 --cluster-config main
