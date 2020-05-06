@@ -1,9 +1,9 @@
 FROM ruby:2.6.6-slim
 
-ARG build_context
+ARG BUILD_CONTEXT
 
-ENV RAILS_ENV $build_context
-ENV NODE_ENV $build_context
+ENV RAILS_ENV $BUILD_CONTEXT
+ENV NODE_ENV $BUILD_CONTEXT
 
 # 警告 "debconf: delaying package configuration, since apt-utils is not installed" 抑止のため
 ENV DEBCONF_NOWARNINGS yes
@@ -52,8 +52,8 @@ RUN apt-get -qq update && apt-get install -yq --no-install-recommends $TMP_DEPS 
 
 ENV LC_ALL ja_JP.UTF-8
 
-RUN chmod +x ./docker/app/setup-${build_context}.sh && \
-    ./docker/app/setup-${build_context}.sh
+RUN chmod +x ./docker/app/setup-${BUILD_CONTEXT}.sh && \
+    ./docker/app/setup-${BUILD_CONTEXT}.sh
 
 # 元に戻す
 ENV DEBIAN_FRONTEND dialog
