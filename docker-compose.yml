@@ -29,7 +29,7 @@ services:
       - public:$APP_ROOT/public
       - sockets:$APP_ROOT/tmp/sockets
       - bundle:/bundle
-    command: /bin/sh -c "while sleep 1000; do :; done"
+    command: /bin/sh -c "./docker/app/entrypoint.sh"
 
 volumes:
   public:

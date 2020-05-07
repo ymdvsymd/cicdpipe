@@ -42,7 +42,6 @@ RUN ln -fs /opt/yarn/bin/yarn /usr/local/bin/yarn && \
     apk add --no-cache $APP_DEPS $DEV_DEPS && \
     cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
     gem update --system && \
+    gem install --no-document bundler:2.1.4 && \
     chmod +x ./docker/app/setup-${BUILD_CONTEXT}.sh && \
     ./docker/app/setup-${BUILD_CONTEXT}.sh
-
-ENTRYPOINT ["./entrypoint.sh"]
