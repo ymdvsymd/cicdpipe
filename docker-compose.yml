@@ -1,34 +1,37 @@
-version: '3.4'
+version: '3'
 
 services:
   web:
-    # ecs-cliでbuildはサポート対象外なため無視される
     build:
       context: ./docker/web
-    image: tiwvstiw/cicdpipe_web
+    image: tiwvstiw${APP_ROOT}_web
     ports:
       - "0:80"
     volumes:
-      - public:/cicdpipe/public
-      - sockets:/cicdpipe/sockets
+      - public:$APP_ROOT/public
+      - sockets:$APP_ROOT/sockets
     depends_on: 
       - app
 
   app:
+    # ecs-cliでbuildはサポート対象外なため無視される
     build:
       # buildでenvironmentを参照できないのでargsを使う
       args:
+        - APP_ROOT=$APP_ROOT
         - BUILD_CONTEXT=production
       context: .
       dockerfile: ./docker/app/Dockerfile
-    image: tiwvstiw/cicdpipe_app
+    image: tiwvstiw${APP_ROOT}_app
     environment:
       - RAILS_LOG_TO_STDOUT=true
     volumes:
-      - public:/cicdpipe/public
-      - sockets:/cicdpipe/tmp/sockets
-    command: /bin/sh -c "./entrypoint.sh"
+      - public:$APP_ROOT/public
+      - sockets:$APP_ROOT/tmp/sockets
+      - bundle:/bundle
+    command: /bin/sh -c "while sleep 1000; do :; done"
 
 volumes:
   public:
   sockets:
+  bundle:

@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3'
 
 services:
   web:
@@ -7,15 +7,14 @@ services:
 
   app:
     build:
-      target: dev-env
       args:
+        - APP_ROOT=$APP_ROOT
         - BUILD_CONTEXT=$BUILD_CONTEXT
     environment:
       - RAILS_LOG_TO_STDOUT=
       - SPROCKETS_CACHE=/sprockets_cache
     volumes:
       - .:/cicdpipe
-      - bundle:/bundle
       - sprockets_cache:/sprockets_cache
     command: /bin/sh -c "while sleep 1000; do :; done"
 
@@ -30,6 +29,5 @@ services:
       - "5432:5432"
 
 volumes:
-  bundle:
   sprockets_cache:
   db_data:

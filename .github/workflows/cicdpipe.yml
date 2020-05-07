@@ -44,9 +44,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Change Docker Compose version (ECS CLI dose not support ver 3.4)
-        run: sed -e 's/3.4/3/g' ./docker-compose.yml > ./ecs-compose.yml
-
       - name: Install ECS CLI
         run: |
           mkdir -p "$HOME/tools/ecs-cli"

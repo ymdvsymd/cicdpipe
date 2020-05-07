@@ -1,8 +1,9 @@
-#!/bin/bash -eu
+#!/bin/sh -eu
 
 BUNDLE_WITHOUT="development test" bundle install
 yarn install
 
 SECRET_KEY_BASE=for_assets_precompile bundle exec rails assets:precompile
 
-rm -rf ./node_modules
+apk del --purge $DEV_DEPS
+rm -rf /usr/local/share/.cache/yarn ${APP_ROOT}/node_modules
