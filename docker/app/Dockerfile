@@ -18,6 +18,7 @@ ARG DEV_DEPS=' \
     less \
     libxml2-dev \
     libxslt-dev \
+    openssh \
     postgresql-dev \
     tzdata \
     '
