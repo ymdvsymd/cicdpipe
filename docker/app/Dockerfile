@@ -1,33 +1,39 @@
-ARG APP_NAME=cicdpipe
+FROM node:14.1.0-alpine as node
+
+RUN apk add --no-cache bash curl && \
+    curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.21.1
+
+
+FROM ruby:2.6.6-alpine as dev
+
+ARG APP_ROOT
+ARG BUILD_CONTEXT
 ARG APP_DEPS=' \
     postgresql-client \
+    postgresql-dev \
     '
-ARG BUILD_DEPS=' \
-    build-essential \
-    libpq-dev \
-    nodejs \
-    yarn \
+ARG DEV_DEPS=' \
+    build-base \
+    git \
+    less \
+    libxml2-dev \
+    libxslt-dev \
+    tzdata \
     '
-ARG TMP_DEPS=' \
-    apt-transport-https \
-    curl \
-    '
-
-FROM ruby:2.6.6-slim AS dev-env
-
-ARG BUILD_CONTEXT
-ARG APP_NAME
-ARG APP_DEPS
-ARG BUILD_DEPS
-ARG TMP_DEPS
-
 ENV RAILS_ENV $BUILD_CONTEXT
 ENV NODE_ENV $BUILD_CONTEXT
-# Node.js 最新版インストールのため
-ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE 1
-# bundlerとPATHを設定
-ENV LANG=C.UTF-8\
-    GEM_HOME=/bundle\
+
+WORKDIR $APP_ROOT
+
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+COPY --from=node /opt/yarn-* /opt/yarn
+RUN ln -fs /opt/yarn/bin/yarn /usr/local/bin/yarn
+
+RUN apk add --no-cache $APP_DEPS $DEV_DEPS && \
+    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+ENV LANG=ja_JP.UTF-8 \
+    GEM_HOME=/bundle \
     BUNDLE_JOBS=4 \
     BUNDLE_RETRY=3
 ENV BUNDLE_PATH $GEM_HOME
@@ -35,44 +41,34 @@ ENV BUNDLE_APP_CONFIG=$BUNDLE_PATH \
     BUNDLE_BIN=$BUNDLE_PATH/bin
 ENV PATH /${APP_NAME}/bin:$BUNDLE_BIN:$PATH
 
-WORKDIR /${APP_NAME}
-# 開発環境ではホストのアプリディレクトリをマウントするため不要だが、リリース時に必要
+RUN gem update --system && \
+    gem install --no-document bundler:2.1.4
+
 COPY . .
-
-# gem update --systemで、bundlerのverは上がるので、gem install bundlerしない
-RUN apt-get -qq update && apt-get install -yq --no-install-recommends $TMP_DEPS && \
-    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get -qq update && apt-get install -yq --no-install-recommends $APP_DEPS $BUILD_DEPS && \
-    gem update --system
-
 RUN chmod +x ./docker/app/setup-${BUILD_CONTEXT}.sh && \
     ./docker/app/setup-${BUILD_CONTEXT}.sh
 
-#
-# for production
-#
-FROM ruby:2.6.6-alpine
 
-ARG APP_NAME
-ARG APP_DEPS
+FROM ruby:2.6-alpine
 
-ENV RAILS_ENV production
-ENV NODE_ENV production
-ENV LANG=C.UTF-8\
-    GEM_HOME=/bundle\
-    BUNDLE_JOBS=4 \
-    BUNDLE_RETRY=3
+ARG APP_ROOT
+
+WORKDIR $APP_ROOT
+
+RUN apk add --no-cache $APP_DEPS tzdata && \
+    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+    apk del --purge tzdata
+
+COPY --from=dev /bundle /bundle
+COPY . .
+
+# RUN chmod +x ./entrypoint.sh
+
+ENV LANG=ja_JP.UTF-8 \
+    GEM_HOME=/bundle
 ENV BUNDLE_PATH $GEM_HOME
 ENV BUNDLE_APP_CONFIG=$BUNDLE_PATH \
     BUNDLE_BIN=$BUNDLE_PATH/bin
 ENV PATH /${APP_NAME}/bin:$BUNDLE_BIN:$PATH
 
-WORKDIR /${APP_NAME}
-COPY . .
-COPY --from=dev-env /bundle /bundle
-
-RUN apk add --no-cache $APP_DEPS && \
-    gem update --system && \
-    chmod +x ./entrypoint.sh
+# ENTRYPOINT ["./entrypoint.sh"]
