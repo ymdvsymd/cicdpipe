@@ -48,9 +48,6 @@ jobs:
 
       - name: Download image
         uses: actions/download-artifact@v2
-        with:
-          name: airflow-image
-          path: ./
 
       - name: Load image
         run: |
