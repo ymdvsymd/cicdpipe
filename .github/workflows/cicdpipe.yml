@@ -49,18 +49,10 @@ jobs:
       - name: Download image
         uses: actions/download-artifact@v2
 
-      - name: Display structure of downloaded files
-        run: ls -R
-        working-directory: ./airflow-image
-
-      - name: Display structure of downloaded files
-        run: ls -R
-        working-directory: ./airflow-image/image
-
       - name: Load image
         run: |
-          docker load -i ./airflow-image/image/web
-          docker load -i ./airflow-image/image/app
+          docker load -i ./airflow-image/web
+          docker load -i ./airflow-image/app
 
       - name: Login to registry
         env:
