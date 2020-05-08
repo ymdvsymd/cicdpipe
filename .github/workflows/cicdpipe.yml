@@ -51,8 +51,8 @@ jobs:
 
       - name: Load image
         run: |
-          docker load -i ./image/web
-          docker load -i ./image/app
+          docker load -i ./airflow-image/image/web
+          docker load -i ./airflow-image/image/app
 
       - name: Login to registry
         env:
