@@ -30,8 +30,9 @@ jobs:
 
       - name: Save image
         run: |
-          docker save -o ./image tiwvstiw/cicdpipe_web
-          docker save -o ./image tiwvstiw/cicdpipe_app
+          mkdir image
+          docker save -o ./image/web tiwvstiw/cicdpipe_web
+          docker save -o ./image/app tiwvstiw/cicdpipe_app
 
       - name: Upload image
         uses: actions/upload-artifact@v2
@@ -51,7 +52,9 @@ jobs:
           name: airflow-image
 
       - name: Load image
-        run: docker load -i ./airflow-image/image
+        run: |
+          docker load -i ./image/web
+          docker load -i ./image/app
 
       - name: Login to registry
         env:
