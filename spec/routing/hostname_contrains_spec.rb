@@ -32,7 +32,6 @@ describe "ルーティング" do
   end
 
   example "ホスト名が対象外ならroutableではない" do
-    pending('なぜか{:controller=>"rails/welcome", :action=>"index"}にルーティングされる')
     expect(get: "https://foo.example.jp").not_to be_routable
   end
 
