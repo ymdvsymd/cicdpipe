@@ -12,15 +12,17 @@ ARG APP_DEPS=' \
     postgresql-client \
     xz-dev \
     '
-ARG DEV_DEPS=' \
+ARG BUILD_DEPS=' \
     build-base \
-    git \
-    less \
     libxml2-dev \
     libxslt-dev \
-    openssh \
     postgresql-dev \
     tzdata \
+    '
+ARG DEV_DEPS='
+    git \
+    less \
+    openssh \
     '
 ENV RAILS_ENV $BUILD_CONTEXT
 ENV NODE_ENV $BUILD_CONTEXT
@@ -40,7 +42,7 @@ COPY --from=node /opt/yarn-* /opt/yarn
 COPY . .
 
 RUN ln -fs /opt/yarn/bin/yarn /usr/local/bin/yarn && \
-    apk add --no-cache $APP_DEPS $DEV_DEPS && \
+    apk add --no-cache $APP_DEPS $BUILD_DEPS && \
     cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
     gem update --system && \
     gem install --no-document bundler:2.1.4 && \
