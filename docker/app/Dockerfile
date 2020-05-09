@@ -19,7 +19,7 @@ ARG BUILD_DEPS=' \
     postgresql-dev \
     tzdata \
     '
-ARG DEV_DEPS='
+ARG DEV_DEPS=' \
     git \
     less \
     openssh \
