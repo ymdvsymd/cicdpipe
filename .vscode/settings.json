@@ -21,6 +21,7 @@
     "behaviours",
     "csrf",
     "falsey",
+    "mypage",
     "plpgsql",
     "postgres",
     "rspec",

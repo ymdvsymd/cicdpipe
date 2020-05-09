@@ -38,9 +38,6 @@
     "kaiwood.endwise",
     "jduponchelle.rainbow-end",
 
-    // ERB
-    "aliariff.vscode-erb-beautify",
-
     // Frontend
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
