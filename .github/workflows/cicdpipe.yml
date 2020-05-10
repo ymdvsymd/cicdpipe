@@ -65,7 +65,9 @@ jobs:
       run: echo "${DOCKER_HUB_TOKEN}" | docker login -u tiwvstiw --password-stdin
 
     - id: push_image
+      name: Push image
       run: |
+        docker image ls
         export IMAGE_VERSION=`date '+%y%m%d_%H%M'`
 
         docker tag tiwvstiw/cicdpipe_web tiwvstiw/cicdpipe_web:$IMAGE_VERSION
