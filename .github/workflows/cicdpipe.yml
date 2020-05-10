@@ -22,11 +22,15 @@ jobs:
 
   build_and_save_image:
     runs-on: ubuntu-18.04
+    outputs:
+      image_version: ${{ steps.build_image.outputs.image_version }}
     steps:
     - uses: actions/checkout@v2
 
     - name: Build image
+      id: build_image
       run: |
+        timedatectl set-timezone Asia/Tokyo
         export IMAGE_VERSION=`date '+%y%m%d_%H%M'`
         docker-compose -f docker-compose.yml build
         echo "::set-output name=IMAGE_VERSION::$IMAGE_VERSION"
@@ -46,8 +50,6 @@ jobs:
   load_and_push_image:
     needs: [test, build_and_save_image]
     runs-on: ubuntu-18.04
-    outputs:
-      image_version: ${{ steps.push_image.outputs.image_version }}
     steps:
     - uses: actions/checkout@v2
 
@@ -64,25 +66,16 @@ jobs:
         DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
       run: echo "${DOCKER_HUB_TOKEN}" | docker login -u tiwvstiw --password-stdin
 
-    - id: push_image
-      name: Push image
+    - name: Push image
       run: |
-        docker image ls
-        export IMAGE_VERSION=`date '+%y%m%d_%H%M'`
-
-        docker tag tiwvstiw/cicdpipe_web tiwvstiw/cicdpipe_web:$IMAGE_VERSION
-        docker tag tiwvstiw/cicdpipe_app tiwvstiw/cicdpipe_web:$IMAGE_VERSION
-
-        docker push tiwvstiw/cicdpipe_web:$IMAGE_VERSION
-        docker push tiwvstiw/cicdpipe_app:$IMAGE_VERSION
-
-        echo "::set-output name=image_version::$IMAGE_VERSION"
+        docker push tiwvstiw/cicdpipe_web
+        docker push tiwvstiw/cicdpipe_app
 
   deploy:
-    needs: [load_and_push_image]
+    needs: [build_and_save_image, load_and_push_image]
     runs-on: ubuntu-18.04
     env: 
-      IMAGE_VERSION: ${{ needs.load_and_push_image.outputs.image_version }}
+      IMAGE_VERSION: ${{ needs.build_and_save_image.outputs.image_version }}
     steps:
     - uses: actions/checkout@v2
 
