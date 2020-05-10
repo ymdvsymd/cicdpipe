@@ -28,7 +28,8 @@
     "rspec",
     "rubocop",
     "tiwvstiw",
-    "unprocessable"
+    "unprocessable",
+    "xexample"
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll": true
