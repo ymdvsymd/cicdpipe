@@ -30,7 +30,6 @@ jobs:
     - name: Build image
       id: build_image
       run: |
-        timedatectl set-timezone Asia/Tokyo
         export IMAGE_VERSION=`date '+%y%m%d_%H%M'`
         docker-compose -f docker-compose.yml build
         echo "::set-output name=IMAGE_VERSION::$IMAGE_VERSION"
