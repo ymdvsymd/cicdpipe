@@ -2,6 +2,7 @@ version: '3'
 
 services:
   web:
+    image: tiwvstiw${APP_ROOT}_web:$BUILD_CONTEXT
     ports:
       - "80:80"
 
@@ -10,6 +11,7 @@ services:
       args:
         - APP_ROOT=$APP_ROOT
         - BUILD_CONTEXT=$BUILD_CONTEXT
+    image: tiwvstiw${APP_ROOT}_app:$BUILD_CONTEXT
     environment:
       - RAILS_LOG_TO_STDOUT=
       - SPROCKETS_CACHE=/sprockets_cache

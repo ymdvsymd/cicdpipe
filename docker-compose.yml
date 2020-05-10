@@ -4,7 +4,7 @@ services:
   web:
     build:
       context: ./docker/web
-    image: tiwvstiw${APP_ROOT}_web
+    image: tiwvstiw${APP_ROOT}_web:$IMAGE_VERSION
     ports:
       - "0:80"
     volumes:
@@ -22,7 +22,7 @@ services:
         - BUILD_CONTEXT=production
       context: .
       dockerfile: ./docker/app/Dockerfile
-    image: tiwvstiw${APP_ROOT}_app
+    image: tiwvstiw${APP_ROOT}_app:$IMAGE_VERSION
     environment:
       - RAILS_LOG_TO_STDOUT=true
     volumes:
