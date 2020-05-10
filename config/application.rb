@@ -44,5 +44,8 @@ module Cicdpipe
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # https://github.com/rails/webpacker/issues/1568
+    config.webpacker.check_yarn_integrity = false
   end
 end
