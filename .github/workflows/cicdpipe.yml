@@ -68,8 +68,8 @@ jobs:
       run: |
         export IMAGE_VERSION=`date '+%y%m%d_%H%M'`
 
-        docker tag tiwvstiw/cicdpipe_web:latest tiwvstiw/cicdpipe_web:$IMAGE_VERSION
-        docker tag tiwvstiw/cicdpipe_app:latest tiwvstiw/cicdpipe_web:$IMAGE_VERSION
+        docker tag tiwvstiw/cicdpipe_web tiwvstiw/cicdpipe_web:$IMAGE_VERSION
+        docker tag tiwvstiw/cicdpipe_app tiwvstiw/cicdpipe_web:$IMAGE_VERSION
 
         docker push tiwvstiw/cicdpipe_web:$IMAGE_VERSION
         docker push tiwvstiw/cicdpipe_app:$IMAGE_VERSION
