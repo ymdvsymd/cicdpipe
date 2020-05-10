@@ -12,4 +12,12 @@ class ErrorsController < ApplicationController
   def internal_server_error
     render status: :internal_server_error
   end
+
+  private
+
+    def current_administrator; end
+
+    def current_staff_member; end
+
+    helper_method :current_administrator, :current_staff_member
 end

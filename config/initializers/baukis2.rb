@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.baukis2 = if Rails.env = "development"
+  config.baukis2 = if Rails.env.development?
                      {
                        staff: { host: "baukis2.example.com", path: "" },
                        admin: { host: "baukis2.example.com", path: "admin" },
