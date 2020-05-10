@@ -20,13 +20,16 @@ jobs:
       - name: Run test
         run: docker-compose exec -T app rspec
 
-  build_image:
+  build_and_save_image:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker-compose -f docker-compose.yml build
+        run: |
+          export IMAGE_VERSION=`date '+%y%m%d_%H%M'`
+          docker-compose -f docker-compose.yml build
+          echo "::set-output name=IMAGE_VERSION::$IMAGE_VERSION"
 
       - name: Save image
         run: |
@@ -40,9 +43,11 @@ jobs:
           name: airflow-image
           path: image
 
-  push_image:
-    needs: [test, build_image]
+  load_and_push_image:
+    needs: [test, build_and_save_image]
     runs-on: ubuntu-18.04
+    outputs:
+      image_version: ${{ steps.push_image.outputs.image_version }}
     steps:
       - uses: actions/checkout@v2
 
@@ -59,14 +64,24 @@ jobs:
           DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
         run: echo "${DOCKER_HUB_TOKEN}" | docker login -u tiwvstiw --password-stdin
 
+      - id: push_image
       - name: Push image
         run: |
-          docker push tiwvstiw/cicdpipe_web
-          docker push tiwvstiw/cicdpipe_app
+          export IMAGE_VERSION=`date '+%y%m%d_%H%M'`
+
+          docker tag tiwvstiw/cicdpipe_web:latest tiwvstiw/cicdpipe_web:$IMAGE_VERSION
+          docker tag tiwvstiw/cicdpipe_app:latest tiwvstiw/cicdpipe_web:$IMAGE_VERSION
+
+          docker push tiwvstiw/cicdpipe_web:$IMAGE_VERSION
+          docker push tiwvstiw/cicdpipe_app:$IMAGE_VERSION
+
+          echo "::set-output name=image_version::$IMAGE_VERSION"
 
   deploy:
-    needs: [push_image]
+    needs: [load_and_push_image]
     runs-on: ubuntu-18.04
+    env: 
+      IMAGE_VERSION: ${{ needs.load_and_push_image.outputs.image_version }}
     steps:
       - uses: actions/checkout@v2
 
