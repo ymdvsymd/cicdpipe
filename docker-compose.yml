@@ -14,8 +14,8 @@ services:
       driver: awslogs
       options:
         awslogs-region: ap-northeast-1
-        awslogs-group: cicdpipe/web
-        awslogs-stream-prefix: "web"
+        awslogs-group: cicdpipe
+        awslogs-stream-prefix:
     depends_on: 
       - app
 
@@ -39,8 +39,8 @@ services:
       driver: awslogs
       options:
         awslogs-region: ap-northeast-1
-        awslogs-group: cicdpipe/app
-        awslogs-stream-prefix: "app"
+        awslogs-group: cicdpipe
+        awslogs-stream-prefix:
     command: /bin/sh -c "./docker/app/entrypoint.sh"
 
 volumes:
