@@ -5,6 +5,8 @@ services:
     image: tiwvstiw${APP_ROOT}_web:$BUILD_CONTEXT
     ports:
       - "80:80"
+    logging:
+      driver: json-file
 
   app:
     build:
@@ -18,6 +20,8 @@ services:
     volumes:
       - .:/cicdpipe
       - sprockets_cache:/sprockets_cache
+    logging:
+      driver: json-file
     command: /bin/sh -c "while sleep 1000; do :; done"
 
   db:

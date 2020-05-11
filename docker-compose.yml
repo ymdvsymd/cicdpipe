@@ -10,6 +10,12 @@ services:
     volumes:
       - public:$APP_ROOT/public
       - sockets:$APP_ROOT/sockets
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: ap-northeast-1
+        awslogs-group: cicdpipe/web
+        tag: "{{.ImageName}}-{{.FullID}}"
     depends_on: 
       - app
 
@@ -29,6 +35,12 @@ services:
       - public:$APP_ROOT/public
       - sockets:$APP_ROOT/tmp/sockets
       - bundle:/bundle
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: ap-northeast-1
+        awslogs-group: cicdpipe/app
+        tag: "{{.ImageName}}-{{.FullID}}"
     command: /bin/sh -c "./docker/app/entrypoint.sh"
 
 volumes:
