@@ -15,7 +15,7 @@ services:
       options:
         awslogs-region: ap-northeast-1
         awslogs-group: cicdpipe
-        awslogs-stream-prefix:
+        awslogs-stream-prefix: cicdpipe
     depends_on: 
       - app
 
@@ -40,7 +40,7 @@ services:
       options:
         awslogs-region: ap-northeast-1
         awslogs-group: cicdpipe
-        awslogs-stream-prefix:
+        awslogs-stream-prefix: cicdpipe
     command: /bin/sh -c "./docker/app/entrypoint.sh"
 
 volumes:
