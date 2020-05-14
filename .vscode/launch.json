@@ -22,6 +22,17 @@
       "args": [
         "server"
       ]
-    }
+    },
+    {
+      "name": "RSpec - active spec file only",
+      "type": "Ruby",
+      "request": "launch",
+      "program": "/bundle/bin/rspec",
+      "args": [
+        "-I",
+        "${workspaceRoot}",
+        "${file}"
+      ]
+    },
   ]
 }
