@@ -31,9 +31,11 @@ describe "ルーティング" do
     )
   end
 
-  xexample "ホスト名が対象外ならroutableではない" do
-    pending('失敗せず{:controller=>"rails/welcome", :action=>"index"}にルーティングされる')
-    expect(get: "https://foo.example.jp").not_to be_routable
+  example "ホスト名が対象外ならrails/welcomeにルーティング" do
+    expect(get: "http://foobar.com").to route_to(
+      controller: "rails/welcome",
+      action: "index"
+    )
   end
 
   example "存在しないパスならroutableではない" do
