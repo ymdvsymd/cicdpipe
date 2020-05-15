@@ -31,11 +31,17 @@ describe "ルーティング" do
     )
   end
 
-  example "ホスト名が対象外ならrails/welcomeにルーティング" do
-    expect(get: "http://foobar.com").to route_to(
-      controller: "rails/welcome",
-      action: "index"
-    )
+  if Rails.env.development?
+    example "ホスト名が対象外ならrails/welcomeにルーティング" do
+      expect(get: "http://foobar.com").to route_to(
+        controller: "rails/welcome",
+        action: "index"
+      )
+    end
+  else
+    example "ホスト名が対象外ならroutableではない" do
+      expect(get: "http://foobar.com").not_to be_routable
+    end
   end
 
   example "存在しないパスならroutableではない" do
