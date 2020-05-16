@@ -32,16 +32,16 @@
     "aki77.rails-extension-pack",
 
     // Ruby
-    "rebornix.ruby",
-    "misogi.ruby-rubocop",
+    "aliariff.vscode-erb-beautify",
     "castwide.solargraph",
-    "kaiwood.endwise",
     "jduponchelle.rainbow-end",
+    "kaiwood.endwise",
+    "misogi.ruby-rubocop",
+    "rebornix.ruby",
 
     // Frontend
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
-    "hookyqr.beautify",
   ],
 
   // Uncomment the next line if you want start specific services in your Docker Compose config.

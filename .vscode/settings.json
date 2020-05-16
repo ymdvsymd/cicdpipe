@@ -37,29 +37,17 @@
   "files.insertFinalNewline": true,
 
   // Ruby
-  "solargraph.useBundler": true,
-  "solargraph.diagnostics": true,
-  "solargraph.formatting": true,
   "[ruby]": {
     "editor.formatOnSave": true
-  },
-
-  // ERB
-  "files.associations": {
-    "*.html.erb": "erb"
-  },
-  "emmet.includeLanguages": {
-    "erb": "html"
   },
   "[erb]": {
     "editor.formatOnSave": true
   },
-
-  // Frontend
-  "beautify.language": {
-    "html": [
-      "erb",
-      "html",
-    ]
+  "emmet.includeLanguages": {
+    "erb": "html"
   },
+  "solargraph.useBundler": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "vscode-erb-beautify.keepBlankLines": 1
 }

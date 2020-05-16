@@ -35,6 +35,7 @@ services:
       - public:$APP_ROOT/public
       - sockets:$APP_ROOT/tmp/sockets
       - bundle:/bundle
+      - yarn_cache:/usr/local/share/.cache/yarn/v2
     logging:
       driver: awslogs
       options:
@@ -47,3 +48,4 @@ volumes:
   public:
   sockets:
   bundle:
+  yarn_cache:
