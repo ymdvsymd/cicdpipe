@@ -46,8 +46,8 @@
   "emmet.includeLanguages": {
     "erb": "html"
   },
-  "solargraph.useBundler": true,
   "solargraph.diagnostics": true,
   "solargraph.formatting": true,
-  "vscode-erb-beautify.keepBlankLines": 1
+  "solargraph.useBundler": true,
+  "vscode-erb-beautify.keepBlankLines": 1,
 }

@@ -29,21 +29,15 @@ rails new . --database=postgresql
 ### 開発用gemを追加する
 group :developmentに以下を追加する。
 ```
+# For debugging
+gem "debase"
+gem "ruby-debug-ide"
+# To clean code
+gem "htmlbeautifier"
 gem "rubocop", require: false
 gem "rubocop-performance", require: false
 gem "rubocop-rails", require: false
 gem "solargraph"
-
-gem "debase"
-gem "ruby-debug-ide"
-
-gem "htmlbeautifier"
-```
-
-### 不要なgemを削除する
-```
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ```
 **bundle installを忘れずに**
 

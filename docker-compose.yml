@@ -34,7 +34,7 @@ services:
     volumes:
       - public:$APP_ROOT/public
       - sockets:$APP_ROOT/tmp/sockets
-      - bundle:/bundle
+      - bundle:/usr/local/bundle
       - yarn_cache:/usr/local/share/.cache/yarn/v2
     logging:
       driver: awslogs
