@@ -5,6 +5,7 @@ require File.expand_path("../config/environment", __dir__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
+Dir[Rails.root.join("spec", "support", "**", "*.rb")].sort.each { |f| require f }
 # Add additional requires below this line. Rails is not loaded until this point!
 require "factory_bot"
 
@@ -67,4 +68,5 @@ RSpec.configure do |config|
   config.before(:all) do
     FactoryBot.reload
   end
+  config.include ActiveSupport::Testing::TimeHelpers
 end

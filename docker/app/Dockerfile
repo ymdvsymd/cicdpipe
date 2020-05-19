@@ -22,6 +22,7 @@ ARG BUILD_DEPS=' \
 ARG DEV_DEPS=' \
     git \
     less \
+    nano \
     openssh \
     '
 ENV RAILS_ENV $BUILD_CONTEXT
