@@ -28,8 +28,10 @@ Style/SymbolArray:
   Enabled: false
 
 # 本に合わせるため
-Rails/HelperInstanceVariable:
+Lint/AmbiguousBlockAssociation:
   Enabled: false
 Metrics/AbcSize:
   Enabled: true
   Max: 25
+Rails/HelperInstanceVariable:
+  Enabled: false

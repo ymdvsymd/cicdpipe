@@ -24,15 +24,21 @@
       ]
     },
     {
-      "name": "RSpec - active spec file only",
+      "name": "Run active spec",
       "type": "Ruby",
       "request": "launch",
-      "program": "/bundle/bin/rspec",
+      "cwd": "${workspaceRoot}",
+      "useBundler": true,
+      "pathToBundler": "/usr/local/bundle/bin/bundle",
+      "pathToRDebugIDE": "/usr/local/bundle/bin/rdebug-ide",
+      "debuggerPort": "1235",
+      "program": "/usr/local/bundle/bin/rspec",
       "args": [
-        "-I",
-        "${workspaceRoot}",
         "${file}"
-      ]
+      ],
+      "env": {
+        "RAILS_ENV": "test"
+      }
     },
   ]
 }

@@ -14,11 +14,11 @@
     "yml",
   ],
   "cSpell.words": [
-    "cicdpipe",
     "Struct",
     "baukis",
     "behaviour",
     "behaviours",
+    "cicdpipe",
     "csrf",
     "devcontainer",
     "falsey",
@@ -27,6 +27,7 @@
     "postgres",
     "rspec",
     "rubocop",
+    "strftime",
     "tiwvstiw",
     "unprocessable",
     "xexample"
@@ -46,6 +47,7 @@
   "emmet.includeLanguages": {
     "erb": "html"
   },
+  "rubyTestExplorer.rspecCommand": "RAILS_ENV=test bundle exec rspec",
   "solargraph.diagnostics": true,
   "solargraph.formatting": true,
   "solargraph.useBundler": true,
