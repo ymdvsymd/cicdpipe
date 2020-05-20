@@ -32,6 +32,8 @@ Lint/AmbiguousBlockAssociation:
   Enabled: false
 Metrics/AbcSize:
   Enabled: true
-  Max: 25
+  Max: 30
 Rails/HelperInstanceVariable:
+  Enabled: false
+Rails/InverseOf:
   Enabled: false
