@@ -27,4 +27,13 @@
 #     @return [Array<self>]
 #   @overload find(*args)
 #     @return [Array<self>]
+#   @overload where(str)
+#     @param str [String]
+#     @return [Class<self>]
+#   @overload where(list)
+#     @param list [Array]
+#     @return [Class<self>]
+#   @overload where(**options)
+#     @param options [Hash]
+#     @return [Class<self>]
 #   @return [self, Array<self>]
