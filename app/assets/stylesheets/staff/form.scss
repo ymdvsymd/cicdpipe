@@ -42,6 +42,9 @@ div#wrapper {
             display: inline-block;
           }
         }
+        input[type="checkbox"] + label {
+          display: inline-block;
+        }
         div.buttons {
           text-align: center;
           input[type="submit"] {
@@ -55,7 +58,7 @@ div#wrapper {
             color: $red;
           }
           input {
-            background-color: $pink;
+            background: $pink;
           }
         }
         div.error-message {
