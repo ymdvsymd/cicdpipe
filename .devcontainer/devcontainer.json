@@ -40,6 +40,7 @@
     "rebornix.ruby",
 
     // Frontend
+    "csstools.postcss",
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
   ],

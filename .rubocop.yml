@@ -3,6 +3,12 @@ inherit_from:
   - .rubocop.rails.yml
   - .rubocop.performance.yml
 
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 
@@ -24,18 +30,29 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: true
 
+Style/SlicingWithRange:
+  Enabled: true
+
 Style/SymbolArray:
   Enabled: false
 
-# 本に合わせるため
+
+# Ruby on Rails 6 実践ガイド
 Lint/AmbiguousBlockAssociation:
   Enabled: false
+
 Metrics/AbcSize:
   Enabled: true
   Max: 30
+
 Rails/HelperInstanceVariable:
   Enabled: false
+
+# Rails/HasManyOrHasOneDependent:
+#   Enabled: false
+
 Rails/InverseOf:
   Enabled: false
+
 Rails/OutputSafety:
   Enabled: false

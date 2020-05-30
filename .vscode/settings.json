@@ -29,6 +29,7 @@
     "postgres",
     "rspec",
     "rubocop",
+    "sprintf",
     "strftime",
     "tiwvstiw",
     "unprocessable",
