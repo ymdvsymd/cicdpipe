@@ -15,7 +15,9 @@ jobs:
         run: BUILD_CONTEXT="test" docker-compose -f docker-compose.yml -f .devcontainer/docker-compose.yml up -d
 
       - name: DB setup
-        run: docker-compose exec -T app rails db:setup
+        run: |
+          docker-compose exec -T app rails db:create
+          docker-compose exec -T app rails db:schema:load
 
       - name: Run test
         run: docker-compose exec -T app rspec
