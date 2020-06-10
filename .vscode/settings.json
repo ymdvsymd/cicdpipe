@@ -25,6 +25,7 @@
     "devcontainer",
     "falsey",
     "furigana",
+    "gsub",
     "mypage",
     "plpgsql",
     "postgres",
