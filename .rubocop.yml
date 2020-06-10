@@ -42,8 +42,10 @@ Lint/AmbiguousBlockAssociation:
   Enabled: false
 
 Metrics/AbcSize:
-  Enabled: true
-  Max: 30
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
 
 Rails/HelperInstanceVariable:
   Enabled: false
