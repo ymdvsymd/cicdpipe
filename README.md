@@ -12,7 +12,20 @@
   - Remote Containers(VSCode拡張)
 
 ## ファイルを書き換える
-Containerを作るために必要なファイルを用途に合わせて書き換える。「myapp」と記載された箇所は、作りたいrailsアプリ名に変更すること。
+- ミドルウェア、ライブラリ、フレームワークのバージョンを変更
+  - .devcontainer/docker-compose.yml  
+    postgres
+  - app/Dockerfile
+    - node
+    - yarn
+    - ruby
+    - bundler
+  - web/Dockerfile  
+    nginx
+  - Gemfile  
+    rails
+- アプリ名の変更  
+  Containerを作るために必要なファイルを用途に合わせて書き換える。「myapp」と記載された箇所は、作りたいrailsアプリ名に変更すること。
 
 ## Containerを作る
 railsアプリの開発環境であるContainerを作る。  
@@ -24,6 +37,11 @@ VSCodeでアプリのルートディレクトリをContainerにアタッチす�
 ```
 rails new . --database=postgresql
 ```
+既存ファイルの上書きについて、以下のようなメッセージが表示される。
+```
+Overwrite /myapp/README.md? (enter "h" for help) [Ynaqdhm]
+```
+「.gitignore」以外「Y」で。
 
 ## Gemfileを編集する
 ### 開発用gemを追加する
